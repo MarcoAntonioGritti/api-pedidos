@@ -1,0 +1,23 @@
+[project]
+name = "api-gerenciamento-pedidos"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "MarcoAntonioGritti",email = "m9946658@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<4"
+dependencies = [
+    "flask-sqlalchemy (>=3.1.1,<4.0.0)",
+    "flask (>=3.1.0,<4.0.0)",
+    "flask-jwt-extended (>=4.7.1,<5.0.0)",
+    "flask-migrate (>=4.1.0,<5.0.0)",
+    "flask-marshmallow (>=1.3.0,<2.0.0)",
+    "flask-bcrypt (>=1.0.1,<2.0.0)",
+    "marshmallow-sqlalchemy (>=1.4.1,<2.0.0)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
