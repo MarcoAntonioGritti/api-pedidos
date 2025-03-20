@@ -12,6 +12,8 @@ from .blueprint import role_bp
 
 
 @role_bp.route("/create", methods=["POST"])
+@jwt_required()
+@requires_roles("Admin")
 def create_role():
     role_schema = CreateRoleSchema()
 

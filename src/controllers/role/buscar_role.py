@@ -11,8 +11,8 @@ from .blueprint import role_bp
 
 
 @role_bp.route("/get/<int:id>", methods=["GET"])
-@requires_roles("Admin")
 @jwt_required()
+@requires_roles("Admin")
 def get_role(id):
     try:
         role = db.get_or_404(Role, id)

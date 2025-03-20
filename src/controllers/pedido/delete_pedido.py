@@ -10,8 +10,8 @@ from .blueprint import pedido_bp
 
 
 @pedido_bp.route("/delete/<int:id>", methods=["DELETE"])
-@requires_roles("Admin")
 @jwt_required()
+@requires_roles("Admin")
 def delete_pedido(id):
     try:
         pedido = db.get_or_404(Pedido, id)

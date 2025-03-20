@@ -10,8 +10,8 @@ from .blueprint import role_bp
 
 
 @role_bp.route("/delete/<int:id>", methods=["DELETE"])
-@requires_roles("Admin")
 @jwt_required()
+@requires_roles("Admin")
 def delete_role(id):
     try:
         role = db.get_or_404(Role, id)

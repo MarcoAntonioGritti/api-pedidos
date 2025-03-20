@@ -12,8 +12,8 @@ from .blueprint import produto_bp
 
 
 @produto_bp.route("/create", methods=["POST"])
-@requires_roles("Admin")
 @jwt_required()
+@requires_roles("Admin")
 def create_produto():
     produto_schema = CreateProdutoSchema()
 

@@ -25,7 +25,8 @@ class Pedido(Base):
 
     cliente: Mapped["Cliente"] = relationship(back_populates="pedidos")  # type: ignore
     produto: Mapped["Produto"] = relationship(back_populates="pedido")  # type: ignore
-    pagamento: Mapped["Pagamento"] = relationship(back_populates="pedido", uselist=False)  # type: ignore
+    pagamento: Mapped["Pagamento"] = relationship(back_populates="pedido")  # type: ignore
+    pix: Mapped["Pix"] = relationship(back_populates="pedido", uselist=False)  # type: ignore
 
     def __repr__(self) -> str:
         return f"Pedido(id={self.id!r}, cliente_id={self.cliente_id!r}, produto_id={self.produto_id!r},valor_pedido={self.valor_pedido!r} ,quantidade={self.quantidade!r}, data={self.data!r}, pagamento_efetuado={self.pagamento_efetuado!r})"

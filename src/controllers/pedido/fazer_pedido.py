@@ -5,14 +5,12 @@ from flask_jwt_extended import jwt_required
 from marshmallow import ValidationError
 
 from src.models import Pedido, db
-from src.utils import requires_roles
 from src.views.pedido import CreatePedidoSchema
 
 from .blueprint import pedido_bp
 
 
 @pedido_bp.route("/create", methods=["POST"])
-@requires_roles("Admin")
 @jwt_required()
 def create_pedido():
     pedido_schema = CreatePedidoSchema()

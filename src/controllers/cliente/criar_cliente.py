@@ -13,6 +13,8 @@ from .blueprint import cliente_bp
 
 
 @cliente_bp.route("/create", methods=["POST"])
+@jwt_required()
+@requires_roles("Admin")
 def create_cliente():
     cliente_schema = CreateClienteSchema()
 

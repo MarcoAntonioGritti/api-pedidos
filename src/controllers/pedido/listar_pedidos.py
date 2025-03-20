@@ -10,8 +10,8 @@ from .blueprint import pedido_bp
 
 
 @pedido_bp.route("/list", methods=["GET"])
-@requires_roles("Admin")
 @jwt_required()
+@requires_roles("Admin")
 def list_pedidos():
     try:
         pedidos = db.session.execute(db.select(Pedido)).scalars().all()

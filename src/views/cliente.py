@@ -15,6 +15,7 @@ class RoleSchema(SQLAlchemyAutoSchema):
 
 class ClienteSchema(SQLAlchemyAutoSchema):
     role = fields.Nested(RoleSchema, only=["name"])
+    password = fields.String(load_only=True)
 
     class Meta:
         model = Cliente

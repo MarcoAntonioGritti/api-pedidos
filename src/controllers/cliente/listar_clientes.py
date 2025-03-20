@@ -11,6 +11,7 @@ from .blueprint import cliente_bp
 
 @cliente_bp.route("/list", methods=["GET"])
 @jwt_required()
+@requires_roles("Admin")
 def list_clientes():
     try:
         clientes = db.session.execute(db.select(Cliente)).scalars().all()
