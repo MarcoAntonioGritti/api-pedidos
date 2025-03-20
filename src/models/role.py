@@ -14,4 +14,4 @@ class Role(Base):
     cliente: Mapped["Cliente"] = relationship(back_populates="role")  # type:ignore
 
     def __repr__(self) -> str:
-        return f"Role(id={self.id!r}, name={self.name!r}, cliente_id={self.cliente_id!r}), descricao={self.descricao!r}"
+        return f"Role(id={self.id!r}, name={self.name!r},descricao={self.descricao!r}"

@@ -1,6 +1,6 @@
 from http import HTTPStatus
 
-from flask import request
+from flask import jsonify, make_response, request
 from flask_jwt_extended import create_access_token
 
 from src.app import bcrypt
@@ -21,7 +21,8 @@ def login():
         db.select(Cliente).where(Cliente.name == name)
     ).scalar()
     if not cliente or not _check_valid_password(cliente.password, password):
-        return {"message": "Bad name or password"}, HTTPStatus.UNAUTHORIZED
+        response = {"message": "Bad name or password"}
+        return make_response(jsonify(response), HTTPStatus.UNAUTHORIZED)
 
     access_token = create_access_token(identity=str(cliente.id))
-    return {"access_token": access_token}
+    return make_response(jsonify({"access_token": access_token}), HTTPStatus.OK)

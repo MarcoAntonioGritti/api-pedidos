@@ -11,8 +11,8 @@ from .blueprint import pedido_bp
 
 
 @pedido_bp.route("/get/<int:id>", methods=["GET"])
-@requires_roles("Admin")
 @jwt_required()
+@requires_roles("Admin")
 def get_pedido(id):
     try:
         pedido = db.get_or_404(Pedido, id)

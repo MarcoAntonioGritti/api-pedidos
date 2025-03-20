@@ -12,8 +12,8 @@ from .blueprint import pedido_bp
 
 
 @pedido_bp.route("/update/<int:id>", methods=["PATCH"])
-@requires_roles("Admin")
 @jwt_required()
+@requires_roles("Admin")
 def update_pedido(id):
     pedido = db.get_or_404(Pedido, id)
 

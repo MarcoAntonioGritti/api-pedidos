@@ -10,11 +10,15 @@ from .blueprint import role_bp
 
 
 @role_bp.route("/list", methods=["GET"])
-@requires_roles("Admin")
 @jwt_required()
+@requires_roles("Admin")
 def list_role():
     try:
         roles = db.session.execute(db.select(Role)).scalars().all()
-        return RoleSchema(many=True).dump(roles), HTTPStatus.OK
-    except Exception:
-        return {"message": "Erro ao buscar roles!"}, HTTPStatus.INTERNAL_SERVER_ERROR
+        serialized_roles = RoleSchema(many=True).dump(roles)  # Agora deve funcionar
+        print(serialized_roles)  # Confirme se os dados aparecem corretamente
+        return serialized_roles, HTTPStatus.OK
+    except Exception as e:
+        return {
+            "message": f"Erro ao buscar roles! {str(e)}"
+        }, HTTPStatus.INTERNAL_SERVER_ERROR

@@ -1,13 +1,16 @@
 from marshmallow import fields
-from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
 from src.app import ma
 from src.models import Role
 
 
-class RoleSchema(ma.SQLAlchemyAutoSchema):
+class RoleSchema(ma.SQLAlchemySchema):
+    id = fields.Int()
+    name = fields.Str()
+    descricao = fields.Str()
+
     class Meta:
-        model: Role
+        model = Role
         load_instance = True
 
 
